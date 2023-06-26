@@ -8,13 +8,26 @@
 
 void handle_int(va_list chars, int *count)
 {
-	char d, buffer[20];
-	int i;
+	char d, *buffer;
+	int i, length;
+
+	if (chars == NULL)
+		return;
 
 	d = va_arg(chars, int);
-	sprintf(buffer, "%d", d);
+	length = snprintf(NULL, 0, "%d", d);
+	buffer = malloc(length + 1);
 
-	for (i = 0; i != '\0'; ++i)
+	if (buffer == NULL)
+		return;
+
+	if (sprintf(buffer, "%d", d) < 0)
+	{
+		free(buffer);
+		return;
+	}
+
+	for (i = 0; buffer[i] != '\0'; ++i)
 	{
 		putchar(buffer[i]);
 		++(*count);
