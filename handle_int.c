@@ -8,8 +8,8 @@
 
 void handle_int(va_list chars, int *count)
 {
-	char d, *buffer;
-	int i, length;
+	char *buffer;
+	int i, d, length;
 
 	if (chars == NULL)
 		return;
@@ -32,4 +32,6 @@ void handle_int(va_list chars, int *count)
 		putchar(buffer[i]);
 		++(*count);
 	}
+
+	free(buffer);
 }
