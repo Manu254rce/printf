@@ -2,7 +2,7 @@
 # define MAIN_H
 
 # include <stdio.h>
-# include <stdib.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <ctype.h>

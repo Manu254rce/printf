@@ -21,7 +21,7 @@ int _printf(const char *format, ...)
 		{"o", handle_octal},
 		{"x", handle_hex_lower},
 		{"X", handle_hex_upper},
-		{"p", handle_ptr}
+		{"p", handle_ptr},
 		{NULL, NULL}
 	};
 
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(format[i])
+			putchar(format[i]);
 		}
 	}
 	va_end(chars);
