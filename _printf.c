@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"x", handle_hex_lower},
 		{"X", handle_hex_upper},
 		{"p", handle_ptr},
+		{"r", handle_revstr},
 		{"%", handle_perc},
 		{NULL, NULL}
 	};
@@ -42,9 +43,8 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			putchar(format[i]);
-		}
+
 	}
 	va_end(chars);
 	return (count);
