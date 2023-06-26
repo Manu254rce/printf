@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"x", handle_hex_lower},
 		{"X", handle_hex_upper},
 		{"p", handle_ptr},
+		{"%", handle_perc},
 		{NULL, NULL}
 	};
 
