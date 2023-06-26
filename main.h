@@ -34,5 +34,7 @@ void handle_unsigned(va_list chars, int *count);
 void handle_ptr(va_list chars, int *count);
 void handle_perc(va_list chars, int *count);
 void handle_revstr(va_list chars, int *count);
+void handle_rot13ed(va_list chars, int *count);
+
 # endif
 

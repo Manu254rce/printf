@@ -11,7 +11,6 @@ int _printf(const char *format, ...)
 	int count = 0;
 	int i, j;
 	va_list chars;
-
 	_fmt type_list[] = {
 		{"c", handle_char},
 		{"s", handle_str},
@@ -23,6 +22,7 @@ int _printf(const char *format, ...)
 		{"X", handle_hex_upper},
 		{"p", handle_ptr},
 		{"r", handle_revstr},
+		{"R", handle_rot13ed},
 		{"%", handle_perc},
 		{NULL, NULL}
 	};
