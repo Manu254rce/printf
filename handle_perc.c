@@ -8,9 +8,9 @@
 
 void handle_perc(va_list chars, int *count)
 {
-    (void) chars;
-    (void) count;
+	(void) chars;
+	(void) count;
 
-    putchar('%');
-    ++(*count);
+	putchar('%');
+	++(*count);
 }
