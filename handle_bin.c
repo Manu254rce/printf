@@ -13,7 +13,7 @@ void unint_to_bin(unsigned int n, char *buffer)
 
 	while (n > 0)
 	{
-		buffer[++i] = (n % 2) + '0';
+		buffer[i++] = (n % 2) + '0';
 		n /= 2;
 	}
 
