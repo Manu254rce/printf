@@ -14,8 +14,7 @@ void handle_unsigned(va_list chars, int *count)
 	char buffer[20];
 
 	u = va_arg(chars, unsigned int);
-
-	sprintf(buffer, "%u", u);
+	i = sprintf(buffer, "%u", u);
 
 	for (i = 0; buffer[i] != '\0'; ++i)
 	{

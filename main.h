@@ -7,7 +7,6 @@
 # include <stdarg.h>
 # include <ctype.h>
 # include <errno.h>
-# include <stderr.h>
 
 # define BUFFERSIZE 1024
 
