@@ -10,15 +10,19 @@
 
 void format_str(const char *format, va_list chars, _fmt *type_list, int *count)
 {
+	int (*handle_precision_ptr)(const char *, int, int *) = &handle_precision;
 	int i, j;
 	char buffer[BUFFERSIZE];
 	size_t buffer_len = 0;
+	int precision = -1;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			++i;
+			i = handle_precision_ptr(format, i, &precision);
+
 			for (j = 0; type_list[j].specifier != NULL; j++)
 			{
 				if (*type_list[j].specifier == format[i])
@@ -28,10 +32,11 @@ void format_str(const char *format, va_list chars, _fmt *type_list, int *count)
 						buffered_write(STDOUT_FILENO, buffer, buffer_len);
 						buffer_len = 0;
 					}
-					type_list[j].handler(chars, count);
+					type_list[j].handler(chars, count, precision);
 					break;
 				}
 			}
+			precision = -1;
 		}
 		else
 		{
@@ -43,7 +48,6 @@ void format_str(const char *format, va_list chars, _fmt *type_list, int *count)
 			}
 		}
 	}
-
 	if (buffer_len > 0)
 		buffered_write(STDOUT_FILENO, buffer, buffer_len);
 }

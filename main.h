@@ -6,6 +6,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <ctype.h>
+# include <errno.h>
+# include <stderr.h>
 
 # define BUFFERSIZE 1024
 
@@ -37,6 +39,7 @@ void handle_revstr(va_list chars, int *count);
 void handle_rot13ed(va_list chars, int *count);
 
 void buffered_write(int fd, const char *str, size_t len);
+int handle_precision(const char *format, int i, int *precision); 
 
 # endif
 
