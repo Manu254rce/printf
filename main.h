@@ -36,5 +36,7 @@ void handle_perc(va_list chars, int *count);
 void handle_revstr(va_list chars, int *count);
 void handle_rot13ed(va_list chars, int *count);
 
+void buffered_write(int fd, const char *str, size_t len);
+
 # endif
 

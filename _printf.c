@@ -11,6 +11,8 @@
 void format_str(const char *format, va_list chars, _fmt *type_list, int *count)
 {
 	int i, j;
+	char buffer[BUFFERSIZE];
+	size_t buffer_len = 0;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -21,14 +23,29 @@ void format_str(const char *format, va_list chars, _fmt *type_list, int *count)
 			{
 				if (*type_list[j].specifier == format[i])
 				{
+					if (buffer_len > 0)
+					{
+						buffered_write(STDOUT_FILENO, buffer, buffer_len);
+						buffer_len = 0;
+					}
 					type_list[j].handler(chars, count);
 					break;
 				}
 			}
 		}
 		else
-			putchar(format[i]);
+		{
+			buffer[buffer_len++] = format[i];
+			if (buffer_len == BUFFERSIZE)
+			{
+				buffered_write(STDOUT_FILENO, buffer, buffer_len);
+				buffer_len = 0;
+			}
+		}
 	}
+
+	if (buffer_len > 0)
+		buffered_write(STDOUT_FILENO, buffer, buffer_len);
 }
 
 /**
